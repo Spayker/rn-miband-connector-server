@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: gateway-point
+  cloud:
+    config:
+      uri: http://config:8888
+      fail-fast: true
+      password: ${CONFIG_SERVICE_PASSWORD}
+      username: user
+      profile: native
+      retry:
+        max-attempts: 10
+  profiles:
+    active: native

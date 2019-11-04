@@ -1,5 +1,4 @@
 FROM java:8-jre
-MAINTAINER Oleksandr Kuzmin <spykerstar@gmail.com>
 
 ADD ./target/config.jar /app/
 CMD ["java", "-Xmx400m", "-jar", "/app/config.jar"]

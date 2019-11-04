@@ -1,5 +1,4 @@
 FROM mongo:3
-MAINTAINER Oleksandr Kuzmin <spykerstar@gmail.com>
 
 ADD init.sh /init.sh
 ADD ./dump /

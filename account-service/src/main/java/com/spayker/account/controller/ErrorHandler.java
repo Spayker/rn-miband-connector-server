@@ -12,8 +12,6 @@ public class ErrorHandler {
 
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
-	// TODO add MethodArgumentNotValidException handler
-	// TODO remove such general handler
 	@ExceptionHandler(IllegalArgumentException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public void processValidationError(IllegalArgumentException e) {

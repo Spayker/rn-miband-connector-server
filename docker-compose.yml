@@ -20,7 +20,7 @@ services:
       config:
         condition: service_healthy
     ports:
-      - 8761:8761
+      - $REGISTRY_SERVICE_DEV_PORT:$REGISTRY_SERVICE_DEV_PORT
     logging:
       options:
         max-size: "10m"
@@ -35,7 +35,7 @@ services:
       config:
         condition: service_healthy
     ports:
-      - 80:4000
+      - 80:$GATEWAY_SERVICE_DEV_PORT
     logging:
       options:
         max-size: "10m"

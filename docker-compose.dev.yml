@@ -4,7 +4,7 @@ services:
   config:
     build: config
     ports:
-      - 8888:8888
+      - $CONFIG_SERVICE_DEV_PORT:$CONFIG_SERVICE_DEV_PORT
 
   gateway-point:
     build: gateway-point
@@ -12,7 +12,7 @@ services:
   auth-service:
     build: auth-service
     ports:
-      - 5000:5000
+      - $AUTH_SERVICE_DEV_PORT:$AUTH_SERVICE_DEV_PORT
 
   auth-mongodb:
     build: mongodb
@@ -22,7 +22,7 @@ services:
   account-service:
     build: account-service
     ports:
-      - 6000:6000
+      - $ACCOUNT_SERVICE_DEV_PORT:$ACCOUNT_SERVICE_DEV_PORT
 
   account-mongodb:
     build: mongodb

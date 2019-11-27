@@ -35,7 +35,7 @@ services:
       config:
         condition: service_healthy
     ports:
-      - 80:$GATEWAY_SERVICE_DEV_PORT
+      - $GATEWAY_SERVICE_DEV_PORT:$GATEWAY_SERVICE_DEV_PORT
     logging:
       options:
         max-size: "10m"

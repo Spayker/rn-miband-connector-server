@@ -17,7 +17,7 @@ services:
   auth-mongodb:
     build: mongodb
     ports:
-      - 25000:27017
+      - $AUTH_MONGODB_EXTERNAL_DEV_PORT:$MONGODB_SERVICE_INTERNAL_DEV_PORT
 
   account-service:
     build: account-service
@@ -27,7 +27,7 @@ services:
   account-mongodb:
     build: mongodb
     ports:
-      - 26000:27017
+      - $ACCOUNT_MONGODB_EXTERNAL_DEV_PORT:$MONGODB_SERVICE_INTERNAL_DEV_PORT
 
   registry:
     build: registry

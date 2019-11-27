@@ -14,7 +14,7 @@ spring:
       username: user
       password: ${MONGODB_PASSWORD}
       database: mservicet
-      port: 27017
+      port: $MONGODB_SERVICE_INTERNAL_DEV_PORT
 
 server:
   servlet:

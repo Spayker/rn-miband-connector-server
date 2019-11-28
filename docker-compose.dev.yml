@@ -8,6 +8,9 @@ services:
 
   gateway-point:
     build: gateway-point
+    ports:
+      - $GATEWAY_SERVICE_DEV_PORT:$GATEWAY_SERVICE_DEV_PORT
+
 
   auth-service:
     build: auth-service
@@ -31,3 +34,5 @@ services:
 
   registry:
     build: registry
+    ports:
+      - $REGISTRY_SERVICE_DEV_PORT:$REGISTRY_SERVICE_DEV_PORT

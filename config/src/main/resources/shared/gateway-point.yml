@@ -30,4 +30,4 @@ zuul:
       sensitiveHeaders:
 
 server:
-  port: 4000
+  port: ${GATEWAY_SERVICE_DEV_PORT}

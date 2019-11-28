@@ -3,7 +3,13 @@ services:
 
   config:
     environment:
-      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
+      CONFIG_SERVICE_PASSWORD:             $CONFIG_SERVICE_PASSWORD
+      CONFIG_SERVICE_DEV_PORT:             $CONFIG_SERVICE_DEV_PORT
+      AUTH_SERVICE_DEV_PORT:               $AUTH_SERVICE_DEV_PORT
+      MONGODB_SERVICE_INTERNAL_DEV_PORT:   $MONGODB_SERVICE_INTERNAL_DEV_PORT
+      ACCOUNT_SERVICE_DEV_PORT:            $ACCOUNT_SERVICE_DEV_PORT
+      REGISTRY_SERVICE_DEV_PORT:           $REGISTRY_SERVICE_DEV_PORT
+      GATEWAY_SERVICE_DEV_PORT:            $GATEWAY_SERVICE_DEV_PORT
     image: mservicet-config
     restart: always
     logging:
@@ -19,8 +25,6 @@ services:
     depends_on:
       config:
         condition: service_healthy
-    ports:
-      - $REGISTRY_SERVICE_DEV_PORT:$REGISTRY_SERVICE_DEV_PORT
     logging:
       options:
         max-size: "10m"
@@ -28,14 +32,13 @@ services:
 
   gateway-point:
     environment:
-      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
+      CONFIG_SERVICE_PASSWORD:  $CONFIG_SERVICE_PASSWORD
+      GATEWAY_SERVICE_DEV_PORT: $GATEWAY_SERVICE_DEV_PORT
     image: mservicet-gateway-point
     restart: always
     depends_on:
       config:
         condition: service_healthy
-    ports:
-      - $GATEWAY_SERVICE_DEV_PORT:$GATEWAY_SERVICE_DEV_PORT
     logging:
       options:
         max-size: "10m"

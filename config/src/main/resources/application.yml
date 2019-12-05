@@ -11,4 +11,4 @@ spring:
       password: ${CONFIG_SERVICE_PASSWORD}
 
 server:
-  port: 8888
+  port: ${CONFIG_SERVICE_DEV_PORT}

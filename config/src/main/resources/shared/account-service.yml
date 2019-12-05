@@ -3,7 +3,7 @@ security:
     client:
       clientId: account-service
       clientSecret: ${ACCOUNT_SERVICE_PASSWORD}
-      accessTokenUri: http://auth-service:5000/mservicet/oauth/token
+      accessTokenUri: http://auth-service:${AUTH_SERVICE_DEV_PORT}/mservicet/oauth/token
       grant-type: client_credentials
       scope: server
 
@@ -14,9 +14,9 @@ spring:
       username: user
       password: ${MONGODB_PASSWORD}
       database: mservicet
-      port: $MONGODB_SERVICE_INTERNAL_DEV_PORT
+      port: ${MONGODB_SERVICE_INTERNAL_DEV_PORT}
 
 server:
   servlet:
     context-path: /accounts
-  port: 6000
+  port: ${ACCOUNT_SERVICE_DEV_PORT}

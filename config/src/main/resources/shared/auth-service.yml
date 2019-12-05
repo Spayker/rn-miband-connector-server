@@ -5,9 +5,9 @@ spring:
       username: user
       password: ${MONGODB_PASSWORD}
       database: mservicet
-      port: $MONGODB_SERVICE_INTERNAL_DEV_PORT
+      port: ${MONGODB_SERVICE_INTERNAL_DEV_PORT}
 
 server:
   servlet:
     context-path: /mservicet
-  port: 5000
+  port: ${AUTH_SERVICE_DEV_PORT}

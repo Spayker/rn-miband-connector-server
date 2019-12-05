@@ -1,2 +1,2 @@
 server:
-  port: 8761
+  port: ${REGISTRY_SERVICE_DEV_PORT}

@@ -1,0 +1,9 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+device-service,com.spayker.device.service.security,CustomUserInfoTokenServices,209,54,14,0,43,8,16,2,9,2
+device-service,com.spayker.device.config,ResourceServerConfig,0,55,0,0,0,11,0,6,0,6
+device-service,com.spayker.device.domain,User,0,17,0,0,0,7,0,5,0,5
+device-service,com.spayker.device.domain,Device,0,24,0,0,0,10,0,7,0,7
+device-service,com.spayker.device.controller,ErrorHandler,6,8,0,0,2,2,1,1,1,1
+device-service,com.spayker.device.controller,DeviceController,0,26,0,0,0,6,0,5,0,5
+device-service,com.spayker.device,DeviceApplication,5,3,0,0,2,1,1,1,1,1
+device-service,com.spayker.device.service,DeviceServiceImpl,0,85,0,0,0,20,0,4,0,4

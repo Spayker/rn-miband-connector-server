@@ -1,4 +1,4 @@
-FROM java:8-jre
+FROM openjdk:11-jre
 
 ADD ./target/registry.jar /app/
 CMD ["java", "-Xmx400m", "-jar", "/app/registry.jar"]

@@ -43,6 +43,19 @@ services:
     ports:
       - $ACCOUNT_MONGODB_EXTERNAL_DEV_PORT:$MONGODB_SERVICE_INTERNAL_DEV_PORT
 
+  device-service:
+    environment:
+      JAVA_TOOL_OPTIONS: ${JAVA_TOOL_OPTIONS}${DEVICE_SERVICE_DEV_DEBUG_PORT}
+    build: device-service
+    ports:
+      - $DEVICE_SERVICE_DEV_PORT:$DEVICE_SERVICE_DEV_PORT
+      - $DEVICE_SERVICE_DEV_DEBUG_PORT:$DEVICE_SERVICE_DEV_DEBUG_PORT
+
+  device-mongodb:
+    build: mongodb
+    ports:
+      - $DEVICE_MONGODB_EXTERNAL_DEV_PORT:$MONGODB_SERVICE_INTERNAL_DEV_PORT
+
   registry:
     environment:
       JAVA_TOOL_OPTIONS: ${JAVA_TOOL_OPTIONS}${REGISTRY_SERVICE_DEV_DEBUG_PORT}

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DeviceServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">device-service</a> &gt; <a href="index.source.html" class="el_package">com.spayker.device.service</a> &gt; <span class="el_source">DeviceServiceImpl.java</span></div><h1>DeviceServiceImpl.java</h1><pre class="source lang-java linenums">package com.spayker.device.service;
+
+import com.spayker.device.client.AuthServiceClient;
+import com.spayker.device.domain.Device;
+import com.spayker.device.domain.User;
+import com.spayker.device.repository.DeviceRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
+
+import java.util.Date;
+
+@Service
+<span class="fc" id="L16">public class DeviceServiceImpl implements DeviceService {</span>
+
+<span class="fc" id="L18">	private final Logger log = LoggerFactory.getLogger(getClass());</span>
+
+	@Autowired
+	private AuthServiceClient authClient;
+
+	@Autowired
+	private DeviceRepository repository;
+
+	@Override
+	public Device findByName(String accountName) {
+<span class="fc" id="L28">		Assert.hasLength(accountName);</span>
+<span class="fc" id="L29">		return repository.findByName(accountName);</span>
+	}
+
+	@Override
+	public Device create(User user) {
+
+<span class="fc" id="L35">		Device existing = repository.findByName(user.getUsername());</span>
+<span class="fc" id="L36">		Assert.isNull(existing, &quot;account already exists: &quot; + user.getUsername());</span>
+
+<span class="fc" id="L38">		authClient.createUser(user);</span>
+<span class="fc" id="L39">		Device account = new Device();</span>
+<span class="fc" id="L40">		account.setName(user.getUsername());</span>
+<span class="fc" id="L41">		account.setLastSeen(new Date());</span>
+
+<span class="fc" id="L43">		repository.save(account);</span>
+
+<span class="fc" id="L45">		log.info(&quot;new account has been created: &quot; + account.getName());</span>
+
+<span class="fc" id="L47">		return account;</span>
+	}
+
+	@Override
+	public void saveChanges(String name, Device update) {
+
+<span class="fc" id="L53">		Device device = repository.findByName(name);</span>
+<span class="fc" id="L54">		Assert.notNull(device, &quot;can't find account with name &quot; + name);</span>
+
+<span class="fc" id="L56">		device.setNote(update.getNote());</span>
+<span class="fc" id="L57">		device.setLastSeen(new Date());</span>
+<span class="fc" id="L58">		repository.save(device);</span>
+
+<span class="fc" id="L60">		log.debug(&quot;device {} changes has been saved&quot;, name);</span>
+<span class="fc" id="L61">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

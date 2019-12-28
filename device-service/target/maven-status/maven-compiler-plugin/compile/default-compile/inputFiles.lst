@@ -1,0 +1,11 @@
+/home/spayker/projects/sbp_server/sbp_server/device-service/src/main/java/com/spayker/device/service/security/CustomUserInfoTokenServices.java
+/home/spayker/projects/sbp_server/sbp_server/device-service/src/main/java/com/spayker/device/service/DeviceServiceImpl.java
+/home/spayker/projects/sbp_server/sbp_server/device-service/src/main/java/com/spayker/device/DeviceApplication.java
+/home/spayker/projects/sbp_server/sbp_server/device-service/src/main/java/com/spayker/device/domain/User.java
+/home/spayker/projects/sbp_server/sbp_server/device-service/src/main/java/com/spayker/device/client/AuthServiceClient.java
+/home/spayker/projects/sbp_server/sbp_server/device-service/src/main/java/com/spayker/device/domain/Device.java
+/home/spayker/projects/sbp_server/sbp_server/device-service/src/main/java/com/spayker/device/controller/ErrorHandler.java
+/home/spayker/projects/sbp_server/sbp_server/device-service/src/main/java/com/spayker/device/controller/DeviceController.java
+/home/spayker/projects/sbp_server/sbp_server/device-service/src/main/java/com/spayker/device/config/ResourceServerConfig.java
+/home/spayker/projects/sbp_server/sbp_server/device-service/src/main/java/com/spayker/device/service/DeviceService.java
+/home/spayker/projects/sbp_server/sbp_server/device-service/src/main/java/com/spayker/device/repository/DeviceRepository.java

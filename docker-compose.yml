@@ -105,3 +105,34 @@ services:
       options:
         max-size: "10m"
         max-file: "10"
+
+  device-service:
+    environment:
+      CONFIG_SERVICE_PASSWORD:              $CONFIG_SERVICE_PASSWORD
+      CONFIG_SERVICE_DEV_PORT:              $CONFIG_SERVICE_DEV_PORT
+      DEVICE_SERVICE_PASSWORD:              $DEVICE_SERVICE_PASSWORD
+      MONGODB_PASSWORD:                     $MONGODB_PASSWORD
+      DEVICE_SERVICE_DEV_PORT:              $DEVICE_SERVICE_DEV_PORT
+      AUTH_SERVICE_DEV_PORT:                $AUTH_SERVICE_DEV_PORT
+      MONGODB_SERVICE_INTERNAL_DEV_PORT:    $MONGODB_SERVICE_INTERNAL_DEV_PORT
+      REGISTRY_SERVICE_DEV_PORT:            $REGISTRY_SERVICE_DEV_PORT
+    image: mservicet-device-service
+    restart: always
+    depends_on:
+      config:
+        condition: service_healthy
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  device-mongodb:
+    environment:
+      INIT_DUMP: device-service-dump.js
+      MONGODB_PASSWORD: $MONGODB_PASSWORD
+    image: mservicet-mongodb
+    restart: always
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"

@@ -1,0 +1,16 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: device-service
+  cloud:
+    config:
+      uri: http://config:${CONFIG_SERVICE_DEV_PORT}
+      fail-fast: true
+      password: ${CONFIG_SERVICE_PASSWORD}
+      username: user
+      profile: native
+      retry:
+        max-attempts: 10
+  profiles:
+    active: native

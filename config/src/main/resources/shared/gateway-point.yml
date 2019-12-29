@@ -29,5 +29,11 @@ zuul:
       stripPrefix: false
       sensitiveHeaders:
 
+    device-service:
+      path: /device/**
+      serviceId: device-service
+      stripPrefix: false
+      sensitiveHeaders:
+
 server:
   port: ${GATEWAY_SERVICE_DEV_PORT}

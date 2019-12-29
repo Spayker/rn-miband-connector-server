@@ -11,6 +11,4 @@ public interface DeviceRepository extends CrudRepository<Device, String> {
 
 	Device findByDeviceId(String deviceId);
 
-	List<Device> findByUserId(String userId);
-
 }

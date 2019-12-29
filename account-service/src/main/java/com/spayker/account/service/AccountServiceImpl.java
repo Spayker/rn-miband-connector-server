@@ -44,12 +44,12 @@ public class AccountServiceImpl implements AccountService {
 		Assert.isNull(existing, "account already exists: " + user.getUsername());
 
 		authClient.createUser(user);
-		Account account = new Account();
-		account.setName(user.getUsername());
-		account.setLastSeen(new Date());
+		Account account = Account.builder()
+				.name(user.getUsername())
+				.lastSeen(new Date())
+				.build();
 
 		repository.save(account);
-
 		log.info("new account has been created: " + account.getName());
 
 		return account;

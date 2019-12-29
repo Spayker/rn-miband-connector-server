@@ -1,7 +1,6 @@
 package com.spayker.account.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.spayker.account.controller.AccountController;
 import com.spayker.account.domain.Account;
 import com.spayker.account.domain.User;
 import com.spayker.account.service.AccountService;
@@ -21,7 +20,9 @@ import java.util.Date;
 
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -47,9 +48,7 @@ public class AccountControllerTest {
 
 	@Test
 	public void shouldGetAccountByName() throws Exception {
-
-		final Account account = new Account();
-		account.setName("test");
+		final Account account = Account.builder().name("test").build();
 
 		when(accountService.findByName(account.getName())).thenReturn(account);
 
@@ -60,9 +59,7 @@ public class AccountControllerTest {
 
 	@Test
 	public void shouldGetCurrentAccount() throws Exception {
-
-		final Account account = new Account();
-		account.setName("test");
+		final Account account = Account.builder().name("test").build();
 
 		when(accountService.findByName(account.getName())).thenReturn(account);
 
@@ -73,21 +70,22 @@ public class AccountControllerTest {
 
 	@Test
 	public void shouldSaveCurrentAccount() throws Exception {
-
-		final Account account = new Account();
-		account.setName("test");
-		account.setNote("test note");
-		account.setLastSeen(new Date());
+		final Account account = Account.builder()
+				.name("test")
+				.note("test note")
+				.lastSeen(new Date())
+				.build();
 
 		String json = mapper.writeValueAsString(account);
 
-		mockMvc.perform(put("/current").principal(new UserPrincipal(account.getName())).contentType(MediaType.APPLICATION_JSON).content(json))
+		mockMvc.perform(put("/current")
+				.principal(new UserPrincipal(account.getName()))
+				.contentType(MediaType.APPLICATION_JSON).content(json))
 				.andExpect(status().isOk());
 	}
 
 	@Test
 	public void shouldRegisterNewAccount() throws Exception {
-
 		final User user = new User();
 		user.setUsername("test");
 		user.setPassword("password");
@@ -100,7 +98,6 @@ public class AccountControllerTest {
 
 	@Test
 	public void shouldFailOnValidationTryingToRegisterNewAccount() throws Exception {
-
 		final User user = new User();
 		user.setUsername("t");
 

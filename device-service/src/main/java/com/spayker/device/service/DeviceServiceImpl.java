@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import java.util.List;
-
 import static java.util.Optional.ofNullable;
 
 @Service
@@ -32,22 +30,12 @@ public class DeviceServiceImpl implements DeviceService {
 	}
 
 	@Override
-	public List<Device> findByUserId(String userId) {
-		return repository.findByUserId(userId);
-	}
-
-	@Override
 	public Device create(Device device) {
 		Device existing = repository.findByDeviceId(device.getDeviceId());
 		Assert.isNull(existing, "device already exists: " + device.getDeviceId());
-		boolean isAccountExist = accountClient.getAccount(device.getUserId()) != null;
-		if (isAccountExist) {
-			repository.save(device);
-			log.info("new device has been created: " + device.getDeviceId());
-			return device;
-		} else {
-			throw new DeviceException("Can not attach to user ID since it does not exist");
-		}
+		repository.save(device);
+		log.info("new device has been created: " + device.getDeviceId());
+		return device;
 	}
 
 	@Override

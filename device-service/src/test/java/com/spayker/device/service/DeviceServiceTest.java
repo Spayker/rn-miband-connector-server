@@ -39,7 +39,6 @@ public class DeviceServiceTest {
 	public void shouldFindDeviceById() {
 		final Device device = Device.builder()
 				.deviceId(RandomStringUtils.randomNumeric(10))
-				.userId(RandomStringUtils.randomNumeric(10))
 				.date(new Date())
 				.hrData(RandomStringUtils.randomNumeric(2))
 				.build();
@@ -59,7 +58,6 @@ public class DeviceServiceTest {
 		final int expectedCallTimes = 1;
 		Device device = Device.builder()
 				.deviceId(RandomStringUtils.randomNumeric(10))
-				.userId(RandomStringUtils.randomNumeric(10))
 				.hrData(RandomStringUtils.randomNumeric(10))
 				.date(new Date())
 				.build();
@@ -78,7 +76,6 @@ public class DeviceServiceTest {
 	public void shouldSaveChangesWhenUpdatedDeviceGiven() {
 		final Device update = Device.builder()
 				.deviceId("123123123")
-				.userId("123123123")
 				.date(new Date())
 				.hrData("99")
 				.build();
@@ -105,7 +102,6 @@ public class DeviceServiceTest {
 	private Device getStubDevice() {
 		return Device.builder()
 				.deviceId(RandomStringUtils.randomNumeric(10))
-				.userId(RandomStringUtils.randomNumeric(10))
 				.date(new Date())
 				.hrData(RandomStringUtils.randomNumeric(2))
 				.build();

@@ -21,6 +21,7 @@ import java.util.Date;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -49,7 +50,6 @@ public class DeviceControllerTest {
 
 		final Device device = Device.builder()
 				.deviceId(RandomStringUtils.randomNumeric(10))
-				.userId(RandomStringUtils.randomNumeric(10))
 				.hrData(RandomStringUtils.randomNumeric(2))
 				.date(new Date())
 				.build();
@@ -62,25 +62,14 @@ public class DeviceControllerTest {
 	}
 
 //	@Test
-//	public void shouldGetCurrentDevice() throws Exception {
-//
-//		final Device device = new Device();
-//		device.setName("test");
-//
-//		when(deviceService.findByName(device.getName())).thenReturn(device);
-//
-//		mockMvc.perform(get("/current").principal(new UserPrincipal(device.getName())))
-//				.andExpect(jsonPath("$.name").value(device.getName()))
-//				.andExpect(status().isOk());
-//	}
-//
-//	@Test
 //	public void shouldSaveCurrentDevice() throws Exception {
 //
-//		final Device device = new Device();
-//		device.setName("test");
-//		device.setNote("test note");
-//		device.setLastSeen(new Date());
+//		final Device device = Device.builder()
+//				.deviceId(RandomStringUtils.randomNumeric(10))
+//				.userId(RandomStringUtils.randomNumeric(10))
+//				.hrData(RandomStringUtils.randomNumeric(2))
+//				.date(new Date())
+//				.build();
 //
 //		String json = mapper.writeValueAsString(device);
 //

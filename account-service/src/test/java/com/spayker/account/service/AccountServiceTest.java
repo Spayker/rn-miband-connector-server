@@ -11,7 +11,9 @@ import org.mockito.Mock;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.times;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 public class AccountServiceTest {
@@ -33,8 +35,9 @@ public class AccountServiceTest {
 	@Test
 	public void shouldFindByName() {
 
-		final Account account = new Account();
-		account.setName("test");
+		final Account account = Account.builder()
+				.name("test")
+				.build();
 
 		when(accountService.findByName(account.getName())).thenReturn(account);
 		Account found = accountService.findByName(account.getName());
@@ -65,11 +68,12 @@ public class AccountServiceTest {
 	@Test
 	public void shouldSaveChangesWhenUpdatedAccountGiven() {
 
-		final Account update = new Account();
-		update.setName("test");
-		update.setNote("test note");
+		final Account update = Account.builder()
+				.name("test")
+				.note("test note")
+				.build();
 
-		final Account account = new Account();
+		final Account account = Account.builder().build();
 
 		when(accountService.findByName("test")).thenReturn(account);
 		accountService.saveChanges("test", update);
@@ -82,7 +86,7 @@ public class AccountServiceTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void shouldFailWhenNoAccountsExistedWithGivenName() {
-		final Account update = new Account();
+		final Account update = Account.builder().build();
 
 		when(accountService.findByName("test")).thenReturn(null);
 		accountService.saveChanges("test", update);

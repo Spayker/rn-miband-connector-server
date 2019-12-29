@@ -17,8 +17,6 @@ public class Device {
 	@Id
 	private String deviceId;
 
-	private String userId;
-
 	private Date date;
 
 	private String hrData;

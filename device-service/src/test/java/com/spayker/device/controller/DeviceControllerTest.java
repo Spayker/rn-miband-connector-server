@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spayker.device.domain.Device;
 import com.spayker.device.service.DeviceService;
 import com.sun.security.auth.UserPrincipal;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +20,7 @@ import java.util.Date;
 
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -43,19 +44,23 @@ public class DeviceControllerTest {
 		this.mockMvc = MockMvcBuilders.standaloneSetup(deviceController).build();
 	}
 
-//	@Test
-//	public void shouldGetDeviceByName() throws Exception {
-//
-//		final Device device = new Device();
-//		device.setName("test");
-//
-//		when(deviceService.findByName(device.getName())).thenReturn(device);
-//
-//		mockMvc.perform(get("/" + device.getName()))
-//				.andExpect(jsonPath("$.name").value(device.getName()))
-//				.andExpect(status().isOk());
-//	}
-//
+	@Test
+	public void shouldGetDeviceById() throws Exception {
+
+		final Device device = Device.builder()
+				.deviceId(RandomStringUtils.randomNumeric(10))
+				.userId(RandomStringUtils.randomNumeric(10))
+				.hrData(RandomStringUtils.randomNumeric(2))
+				.date(new Date())
+				.build();
+
+		when(deviceService.findByDeviceId(device.getDeviceId())).thenReturn(device);
+
+		mockMvc.perform(get("/device/" + device.getDeviceId()))
+				.andExpect(jsonPath("$.deviceId").value(device.getDeviceId()))
+				.andExpect(status().isOk());
+	}
+
 //	@Test
 //	public void shouldGetCurrentDevice() throws Exception {
 //

@@ -1,6 +1,6 @@
-package com.spayker.device.client;
+package com.spayker.account.client;
 
-import com.spayker.device.domain.User;
+import com.spayker.account.domain.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;

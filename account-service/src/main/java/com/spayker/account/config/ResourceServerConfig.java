@@ -1,6 +1,6 @@
-package com.spayker.device.config;
+package com.spayker.account.config;
 
-import com.spayker.device.service.security.CustomUserInfoTokenServices;
+import com.spayker.account.service.security.CustomUserInfoTokenServices;
 import feign.RequestInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.ResourceServerProperties;

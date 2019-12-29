@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
-@Document(collection = "unit_configs")
+@Document(collection = "devices")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 @Builder

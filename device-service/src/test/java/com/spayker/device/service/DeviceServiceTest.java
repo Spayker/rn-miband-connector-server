@@ -1,5 +1,6 @@
 package com.spayker.device.service;
 
+import com.spayker.device.client.AccountServiceClient;
 import com.spayker.device.domain.Device;
 import com.spayker.device.repository.DeviceRepository;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -12,6 +13,7 @@ import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
@@ -24,6 +26,9 @@ public class DeviceServiceTest {
 
 	@Mock
 	private DeviceRepository repository;
+
+	@Mock
+	private AccountServiceClient accountServiceClient;
 
 	@Before
 	public void setup() {
@@ -59,6 +64,9 @@ public class DeviceServiceTest {
 				.date(new Date())
 				.build();
 
+		String accountId = RandomStringUtils.randomNumeric(10);
+
+		when(accountServiceClient.getAccount(anyString())).thenReturn(accountId);
 		Device storedDevice = deviceService.create(device);
 
 		assertEquals(storedDevice.getDeviceId(), device.getDeviceId());

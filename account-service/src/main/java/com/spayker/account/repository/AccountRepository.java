@@ -1,6 +1,6 @@
-package com.spayker.device.repository;
+package com.spayker.account.repository;
 
-import com.spayker.device.domain.Account;
+import com.spayker.account.domain.Account;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

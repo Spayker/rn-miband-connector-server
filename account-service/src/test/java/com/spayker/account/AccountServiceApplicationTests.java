@@ -1,4 +1,4 @@
-package com.spayker.device;
+package com.spayker.account;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

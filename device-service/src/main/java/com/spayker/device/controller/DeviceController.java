@@ -3,7 +3,6 @@ package com.spayker.device.controller;
 import com.spayker.device.domain.Device;
 import com.spayker.device.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,8 +17,7 @@ public class DeviceController {
 	@Autowired
 	private DeviceService deviceService;
 
-	@PreAuthorize("#oauth2.hasScope('server')")
-	@RequestMapping(path = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(path = "/device/{deviceId}", method = RequestMethod.GET)
 	public Device getDeviceById(@PathVariable String deviceId) {
 		return deviceService.findByDeviceId(deviceId);
 	}

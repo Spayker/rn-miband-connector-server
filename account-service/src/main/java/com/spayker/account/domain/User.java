@@ -1,4 +1,4 @@
-package com.spayker.device.domain;
+package com.spayker.account.domain;
 
 import org.hibernate.validator.constraints.Length;
 

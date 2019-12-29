@@ -1,7 +1,6 @@
 package com.spayker.device.service;
 
 import com.spayker.device.client.AccountServiceClient;
-import com.spayker.device.domain.Account;
 import com.spayker.device.domain.Device;
 import com.spayker.device.exception.DeviceException;
 import com.spayker.device.repository.DeviceRepository;
@@ -45,7 +44,7 @@ public class DeviceServiceImpl implements DeviceService {
 		if (isAccountExist) {
 			repository.save(device);
 			log.info("new device has been created: " + device.getDeviceId());
-			return device;	
+			return device;
 		} else {
 			throw new DeviceException("Can not attach to user ID since it does not exist");
 		}

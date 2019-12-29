@@ -1,11 +1,15 @@
-package com.spayker.device.controller;
+package com.spayker.account.controller;
 
-import com.spayker.device.domain.Account;
-import com.spayker.device.domain.User;
-import com.spayker.device.service.AccountService;
+import com.spayker.account.domain.Account;
+import com.spayker.account.domain.User;
+import com.spayker.account.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -23,11 +27,10 @@ public class AccountController {
 	}
 
 	@PreAuthorize("#oauth2.hasScope('server')")
-	@RequestMapping(path = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(path = "/account/{id}", method = RequestMethod.GET)
 	public Account getAccountById(@PathVariable String id) {
 		return accountService.findById(id);
 	}
-
 
 	@RequestMapping(path = "/current", method = RequestMethod.GET)
 	public Account getCurrentAccount(Principal principal) {

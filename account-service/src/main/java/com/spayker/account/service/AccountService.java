@@ -1,7 +1,7 @@
-package com.spayker.device.service;
+package com.spayker.account.service;
 
-import com.spayker.device.domain.Account;
-import com.spayker.device.domain.User;
+import com.spayker.account.domain.Account;
+import com.spayker.account.domain.User;
 
 public interface AccountService {
 

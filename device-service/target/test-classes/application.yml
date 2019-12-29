@@ -1,5 +1,0 @@
-spring:
-  data:
-    mongodb:
-      database: mservicet
-      port: 0

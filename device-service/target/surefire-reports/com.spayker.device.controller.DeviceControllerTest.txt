@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.spayker.device.controller.DeviceControllerTest
--------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.506 s - in com.spayker.device.controller.DeviceControllerTest

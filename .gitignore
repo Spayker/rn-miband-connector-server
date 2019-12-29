@@ -34,3 +34,4 @@ config/target
 gateway-point/target
 registry/target
 account-service/target
+device-service/target

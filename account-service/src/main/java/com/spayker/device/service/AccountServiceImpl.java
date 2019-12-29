@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.util.Date;
+import java.util.Optional;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -27,6 +28,13 @@ public class AccountServiceImpl implements AccountService {
 	public Account findByName(String accountName) {
 		Assert.hasLength(accountName);
 		return repository.findByName(accountName);
+	}
+
+	@Override
+	public Account findById(String accountId) {
+		Assert.hasLength(accountId);
+		Optional<Account> foundAccount = repository.findById(accountId);
+		return foundAccount.orElse(null);
 	}
 
 	@Override

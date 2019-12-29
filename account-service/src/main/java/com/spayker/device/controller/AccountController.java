@@ -22,6 +22,13 @@ public class AccountController {
 		return accountService.findByName(name);
 	}
 
+	@PreAuthorize("#oauth2.hasScope('server')")
+	@RequestMapping(path = "/{id}", method = RequestMethod.GET)
+	public Account getAccountById(@PathVariable String id) {
+		return accountService.findById(id);
+	}
+
+
 	@RequestMapping(path = "/current", method = RequestMethod.GET)
 	public Account getCurrentAccount(Principal principal) {
 		return accountService.findByName(principal.getName());

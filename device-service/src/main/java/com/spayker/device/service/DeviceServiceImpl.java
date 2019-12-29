@@ -1,5 +1,7 @@
 package com.spayker.device.service;
 
+import com.spayker.device.client.AccountServiceClient;
+import com.spayker.device.domain.Account;
 import com.spayker.device.domain.Device;
 import com.spayker.device.exception.DeviceException;
 import com.spayker.device.repository.DeviceRepository;
@@ -19,6 +21,9 @@ public class DeviceServiceImpl implements DeviceService {
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
 	@Autowired
+	private AccountServiceClient accountClient;
+
+	@Autowired
 	private DeviceRepository repository;
 
 	@Override
@@ -36,9 +41,14 @@ public class DeviceServiceImpl implements DeviceService {
 	public Device create(Device device) {
 		Device existing = repository.findByDeviceId(device.getDeviceId());
 		Assert.isNull(existing, "device already exists: " + device.getDeviceId());
-		repository.save(device);
-		log.info("new device has been created: " + device.getDeviceId());
-		return device;
+		boolean isAccountExist = accountClient.getAccount(device.getUserId()) != null;
+		if (isAccountExist) {
+			repository.save(device);
+			log.info("new device has been created: " + device.getDeviceId());
+			return device;	
+		} else {
+			throw new DeviceException("Can not attach to user ID since it does not exist");
+		}
 	}
 
 	@Override

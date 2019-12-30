@@ -49,6 +49,7 @@ public class DeviceServiceImpl implements DeviceService {
 		Device storedDevice = ofNullable(repository.findByDeviceId(device.getDeviceId()))
 				.orElseThrow(() -> new IllegalArgumentException("Device with id " + deviceId + " does not exist"));
 
+		storedDevice.setUserName(device.getUserName());
 		storedDevice.setHrData(device.getHrData());
 		storedDevice.setDate(device.getDate());
 		repository.save(storedDevice);

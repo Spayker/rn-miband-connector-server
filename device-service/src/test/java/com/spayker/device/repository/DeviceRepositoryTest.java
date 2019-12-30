@@ -37,7 +37,7 @@ public class DeviceRepositoryTest {
 	private Device createStubDevice() {
 		return Device.builder()
 				.deviceId(RandomStringUtils.randomNumeric(10))
-				.date(new Date())
+				.date(new Date().toString())
 				.hrData(RandomStringUtils.randomNumeric(2))
 				.build();
 	}

@@ -9,6 +9,9 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
+import java.util.Collections;
+import java.util.Date;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -70,6 +73,8 @@ public class AccountServiceTest {
 
 		final Account update = Account.builder()
 				.name("test")
+				.lastSeen(new Date())
+				.deviceIds(Collections.emptyList())
 				.build();
 
 		final Account account = Account.builder().build();

@@ -39,7 +39,7 @@ public class DeviceServiceTest {
 	public void shouldFindDeviceById() {
 		final Device device = Device.builder()
 				.deviceId(RandomStringUtils.randomNumeric(10))
-				.date(new Date())
+				.date(new Date().toString())
 				.hrData(RandomStringUtils.randomNumeric(2))
 				.build();
 
@@ -59,7 +59,7 @@ public class DeviceServiceTest {
 		Device device = Device.builder()
 				.deviceId(RandomStringUtils.randomNumeric(10))
 				.hrData(RandomStringUtils.randomNumeric(10))
-				.date(new Date())
+				.date(new Date().toString())
 				.build();
 
 		when(accountServiceClient.isAccountExist(anyString())).thenReturn(true);
@@ -74,7 +74,7 @@ public class DeviceServiceTest {
 	public void shouldSaveChangesWhenUpdatedDeviceGiven() {
 		final Device update = Device.builder()
 				.deviceId("123123123")
-				.date(new Date())
+				.date(new Date().toString())
 				.hrData("99")
 				.build();
 
@@ -100,7 +100,7 @@ public class DeviceServiceTest {
 	private Device getStubDevice() {
 		return Device.builder()
 				.deviceId(RandomStringUtils.randomNumeric(10))
-				.date(new Date())
+				.date(new Date().toString())
 				.hrData(RandomStringUtils.randomNumeric(2))
 				.build();
 	}

@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
 
 import static java.util.Optional.ofNullable;
 
@@ -32,10 +31,28 @@ public class DeviceServiceImpl implements DeviceService {
 	@Override
 	public Device create(Device device) {
 		Device existing = repository.findByDeviceId(device.getDeviceId());
-		Assert.isNull(existing, "device already exists: " + device.getDeviceId());
-		repository.save(device);
-		log.info("new device has been created: " + device.getDeviceId());
-		return device;
+		if (existing == null){
+
+			String username = device.getUserName();
+			if (username == null){
+				throw new DeviceException("username is null, can not attach device: " + device.getDeviceId());
+			}
+
+			if (username.isEmpty() || username.isBlank()){
+				throw new DeviceException("username is empty, can not attach device: " + device.getDeviceId());
+			}
+
+			Boolean isAccountExist = accountClient.isAccountExist(username);
+			if(isAccountExist){
+				repository.save(device);
+				log.info("new device has been created: " + device.getDeviceId());
+				return device;
+			} else {
+				throw new DeviceException("Account with name: " + username + " has not been registered yet");
+			}
+		} else {
+			throw new DeviceException("device with id: " + device.getDeviceId() + " already exists");
+		}
 	}
 
 	@Override

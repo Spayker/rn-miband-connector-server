@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -60,11 +61,9 @@ public class AccountServiceImpl implements AccountService {
 
 		Account account = repository.findByName(name);
 		Assert.notNull(account, "can't find account with name " + name);
-
-		account.setNote(update.getNote());
 		account.setLastSeen(new Date());
+		account.setDeviceIds(update.getDeviceIds());
 		repository.save(account);
-
 		log.debug("account {} changes has been saved", name);
 	}
 }

@@ -25,9 +25,6 @@ public class Account {
 
 	private Date lastSeen;
 
-	@Length(min = 0, max = 20_000)
-	private String note;
-
 	private List<String> deviceIds;
 
 }

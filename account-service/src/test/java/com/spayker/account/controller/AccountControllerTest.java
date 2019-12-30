@@ -72,7 +72,6 @@ public class AccountControllerTest {
 	public void shouldSaveCurrentAccount() throws Exception {
 		final Account account = Account.builder()
 				.name("test")
-				.note("test note")
 				.lastSeen(new Date())
 				.build();
 

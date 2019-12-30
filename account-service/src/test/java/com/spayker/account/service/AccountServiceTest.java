@@ -70,7 +70,6 @@ public class AccountServiceTest {
 
 		final Account update = Account.builder()
 				.name("test")
-				.note("test note")
 				.build();
 
 		final Account account = Account.builder().build();
@@ -78,7 +77,6 @@ public class AccountServiceTest {
 		when(accountService.findByName("test")).thenReturn(account);
 		accountService.saveChanges("test", update);
 
-		assertEquals(update.getNote(), account.getNote());
 		assertNotNull(account.getLastSeen());
 		
 		verify(repository, times(1)).save(account);

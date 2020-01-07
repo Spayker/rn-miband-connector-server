@@ -51,6 +51,7 @@ services:
       CONFIG_SERVICE_PASSWORD:              $CONFIG_SERVICE_PASSWORD
       CONFIG_SERVICE_DEV_PORT:              $CONFIG_SERVICE_DEV_PORT
       ACCOUNT_SERVICE_PASSWORD:             $ACCOUNT_SERVICE_PASSWORD
+      DEVICE_SERVICE_PASSWORD:              $DEVICE_SERVICE_PASSWORD
       AUTH_SERVICE_DEV_PORT:                $AUTH_SERVICE_DEV_PORT
       MONGODB_PASSWORD:                     $MONGODB_PASSWORD
       REGISTRY_SERVICE_DEV_PORT:            $REGISTRY_SERVICE_DEV_PORT
@@ -132,6 +133,16 @@ services:
       MONGODB_PASSWORD: $MONGODB_PASSWORD
     image: mservicet-mongodb
     restart: always
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    restart: always
+    ports:
+      - 15672:15672
     logging:
       options:
         max-size: "10m"

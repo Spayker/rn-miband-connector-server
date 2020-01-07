@@ -63,3 +63,7 @@ services:
     ports:
       - $REGISTRY_SERVICE_DEV_PORT:$REGISTRY_SERVICE_DEV_PORT
       - $REGISTRY_SERVICE_DEV_DEBUG_PORT:$REGISTRY_SERVICE_DEV_DEBUG_PORT
+
+  rabbitmq:
+    ports:
+      - 5672:5672

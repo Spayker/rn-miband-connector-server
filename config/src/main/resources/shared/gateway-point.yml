@@ -30,7 +30,7 @@ zuul:
       sensitiveHeaders:
 
     device-service:
-      path: /device/**
+      path: /devices/**
       serviceId: device-service
       stripPrefix: false
       sensitiveHeaders:

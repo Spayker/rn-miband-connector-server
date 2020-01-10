@@ -66,4 +66,4 @@ services:
 
   rabbitmq:
     ports:
-      - 5672:5672
+      - $RABBITMQ_SERVICE_INTERNAL_DEV_PORT:$RABBITMQ_SERVICE_INTERNAL_DEV_PORT

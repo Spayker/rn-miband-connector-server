@@ -142,7 +142,7 @@ services:
     image: rabbitmq:3-management
     restart: always
     ports:
-      - 15672:15672
+      - $RABBITMQ_SERVICE_INTERNAL_PROD_PORT:$RABBITMQ_SERVICE_INTERNAL_PROD_PORT
     logging:
       options:
         max-size: "10m"

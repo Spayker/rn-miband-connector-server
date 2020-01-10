@@ -22,7 +22,7 @@ public class DeviceController {
 		return deviceService.findByDeviceId(deviceId);
 	}
 
-	@RequestMapping(path = "/current", method = RequestMethod.PUT)
+	@RequestMapping(path = "/device", method = RequestMethod.PUT)
 	public void updateDeviceData(@Valid @RequestBody Device device) {
 		deviceService.saveChanges(device);
 	}

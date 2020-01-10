@@ -93,7 +93,7 @@ public class DeviceControllerTest {
 
 		String json = mapper.writeValueAsString(device);
 
-		mockMvc.perform(put("/current").principal(new UserPrincipal(device.getUserName())).contentType(MediaType.APPLICATION_JSON).content(json))
+		mockMvc.perform(put("/device").principal(new UserPrincipal(device.getUserName())).contentType(MediaType.APPLICATION_JSON).content(json))
 				.andExpect(status().isOk());
 	}
 

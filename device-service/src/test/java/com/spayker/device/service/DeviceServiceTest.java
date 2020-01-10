@@ -63,7 +63,7 @@ public class DeviceServiceTest {
 				.date(new Date().toString())
 				.build();
 
-		when(accountServiceClient.isAccountExist(anyString())).thenReturn(true);
+		when(accountServiceClient.getAccountByName(anyString())).thenReturn("account");
 		Device storedDevice = deviceService.create(device);
 
 		assertEquals(storedDevice.getDeviceId(), device.getDeviceId());

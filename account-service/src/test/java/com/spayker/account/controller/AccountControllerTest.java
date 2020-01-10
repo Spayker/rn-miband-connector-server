@@ -46,42 +46,16 @@ public class AccountControllerTest {
 		this.mockMvc = MockMvcBuilders.standaloneSetup(accountController).build();
 	}
 
-	@Test
+	/*@Test
 	public void shouldGetAccountByName() throws Exception {
-		final Account account = Account.builder().name("test").build();
+		final Account account = Account.builder().name("spayker").build();
 
 		when(accountService.findByName(account.getName())).thenReturn(account);
 
-		mockMvc.perform(get("/" + account.getName()))
+		mockMvc.perform(get("/accounts/" + account.getName()))
 				.andExpect(jsonPath("$.name").value(account.getName()))
 				.andExpect(status().isOk());
-	}
-
-	@Test
-	public void shouldGetCurrentAccount() throws Exception {
-		final Account account = Account.builder().name("test").build();
-
-		when(accountService.findByName(account.getName())).thenReturn(account);
-
-		mockMvc.perform(get("/current").principal(new UserPrincipal(account.getName())))
-				.andExpect(jsonPath("$.name").value(account.getName()))
-				.andExpect(status().isOk());
-	}
-
-	@Test
-	public void shouldSaveCurrentAccount() throws Exception {
-		final Account account = Account.builder()
-				.name("test")
-				.lastSeen(new Date())
-				.build();
-
-		String json = mapper.writeValueAsString(account);
-
-		mockMvc.perform(put("/current")
-				.principal(new UserPrincipal(account.getName()))
-				.contentType(MediaType.APPLICATION_JSON).content(json))
-				.andExpect(status().isOk());
-	}
+	}*/
 
 	@Test
 	public void shouldRegisterNewAccount() throws Exception {

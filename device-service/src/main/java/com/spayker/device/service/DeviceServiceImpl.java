@@ -42,8 +42,8 @@ public class DeviceServiceImpl implements DeviceService {
 				throw new DeviceException("username is empty, can not attach device: " + device.getDeviceId());
 			}
 
-			Boolean isAccountExist = accountClient.isAccountExist(username);
-			if(isAccountExist){
+			String account = accountClient.getAccountByName(username);
+			if(account != null){
 				repository.save(device);
 				log.info("new device has been created: " + device.getDeviceId());
 				return device;

@@ -17,12 +17,12 @@ public class DeviceController {
 	@Autowired
 	private DeviceService deviceService;
 
-	@RequestMapping(path = "/device/{deviceId}", method = RequestMethod.GET)
+	@RequestMapping(path = "/{deviceId}", method = RequestMethod.GET)
 	public Device getDeviceById(@PathVariable String deviceId) {
 		return deviceService.findByDeviceId(deviceId);
 	}
 
-	@RequestMapping(path = "/device", method = RequestMethod.PUT)
+	@RequestMapping(path = "/", method = RequestMethod.PUT)
 	public void updateDeviceData(@Valid @RequestBody Device device) {
 		deviceService.saveChanges(device);
 	}

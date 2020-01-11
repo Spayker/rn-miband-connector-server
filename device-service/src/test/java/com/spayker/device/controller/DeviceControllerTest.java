@@ -57,7 +57,7 @@ public class DeviceControllerTest {
 
 		when(deviceService.findByDeviceId(device.getDeviceId())).thenReturn(device);
 
-		mockMvc.perform(get("/device/" + device.getDeviceId()))
+		mockMvc.perform(get("/" + device.getDeviceId()))
 				.andExpect(jsonPath("$.deviceId").value(device.getDeviceId()))
 				.andExpect(status().isOk());
 	}
@@ -93,7 +93,7 @@ public class DeviceControllerTest {
 
 		String json = mapper.writeValueAsString(device);
 
-		mockMvc.perform(put("/device").principal(new UserPrincipal(device.getUserName())).contentType(MediaType.APPLICATION_JSON).content(json))
+		mockMvc.perform(put("/").principal(new UserPrincipal(device.getUserName())).contentType(MediaType.APPLICATION_JSON).content(json))
 				.andExpect(status().isOk());
 	}
 

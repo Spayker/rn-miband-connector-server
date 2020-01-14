@@ -3,6 +3,7 @@ package com.spayker.account.service;
 import com.spayker.account.client.AuthServiceClient;
 import com.spayker.account.domain.Account;
 import com.spayker.account.domain.User;
+import com.spayker.account.exception.AccountException;
 import com.spayker.account.repository.AccountRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -87,7 +88,7 @@ public class AccountServiceTest {
 		verify(repository, times(1)).save(account);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = AccountException.class)
 	public void shouldFailWhenNoAccountsExistedWithGivenName() {
 		final Account update = Account.builder().build();
 

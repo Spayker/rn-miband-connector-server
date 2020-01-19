@@ -33,7 +33,7 @@ public class DeviceServiceImpl implements DeviceService {
 		Device existing = repository.findByDeviceId(device.getDeviceId());
 		if (existing == null){
 
-			String username = device.getUserName();
+			String username = device.getUsername();
 			if (username == null){
 				throw new DeviceException("username is null, can not attach device: " + device.getDeviceId());
 			}
@@ -66,7 +66,7 @@ public class DeviceServiceImpl implements DeviceService {
 		Device storedDevice = ofNullable(repository.findByDeviceId(device.getDeviceId()))
 				.orElseThrow(() -> new IllegalArgumentException("Device with id " + deviceId + " does not exist"));
 
-		storedDevice.setUserName(device.getUserName());
+		storedDevice.setUsername(device.getUsername());
 		storedDevice.setHrData(device.getHrData());
 		storedDevice.setDate(device.getDate());
 		repository.save(storedDevice);

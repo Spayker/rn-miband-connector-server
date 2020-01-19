@@ -19,7 +19,7 @@ public class Device {
 	@Id
 	private String deviceId;
 
-	private String userName;
+	private String username;
 
 	private String date;
 

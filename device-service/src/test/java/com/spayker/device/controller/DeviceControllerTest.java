@@ -66,7 +66,7 @@ public class DeviceControllerTest {
 	public void shouldRegisterNewDevice() throws Exception {
 
 		final Device device = Device.builder()
-				.userName("spayker")
+				.username("spayker")
 				.hrData("0")
 				.deviceId(RandomStringUtils.randomNumeric(10))
 				.date(new Date().toString())
@@ -86,14 +86,14 @@ public class DeviceControllerTest {
 
 		final Device device = Device.builder()
 				.deviceId(RandomStringUtils.randomNumeric(10))
-				.userName(RandomStringUtils.randomNumeric(10))
+				.username(RandomStringUtils.randomNumeric(10))
 				.hrData(RandomStringUtils.randomNumeric(2))
 				.date(new Date().toString())
 				.build();
 
 		String json = mapper.writeValueAsString(device);
 
-		mockMvc.perform(put("/").principal(new UserPrincipal(device.getUserName())).contentType(MediaType.APPLICATION_JSON).content(json))
+		mockMvc.perform(put("/").principal(new UserPrincipal(device.getUsername())).contentType(MediaType.APPLICATION_JSON).content(json))
 				.andExpect(status().isOk());
 	}
 

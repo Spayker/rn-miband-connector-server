@@ -57,7 +57,7 @@ public class DeviceServiceTest {
 	public void shouldCreateDeviceWithGivenUser() {
 		final int expectedCallTimes = 1;
 		Device device = Device.builder()
-				.userName(RandomStringUtils.randomAlphabetic(6))
+				.username(RandomStringUtils.randomAlphabetic(6))
 				.deviceId(RandomStringUtils.randomNumeric(10))
 				.hrData(RandomStringUtils.randomNumeric(10))
 				.date(new Date().toString())

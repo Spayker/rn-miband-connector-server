@@ -1,0 +1,21 @@
+dist: trusty
+sudo: required
+
+services:
+  - docker
+
+language: java
+jdk: oraclejdk11
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+
+  #TAG
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
+
+  # CONFIG SERVICE
+  - export CONFIG=mservicet/mservicet-config
+  - docker build -t $CONFIG:$COMMIT ./config
+  - docker tag $CONFIG:$COMMIT $CONFIG:$TAG
+  - docker push $CONFIG

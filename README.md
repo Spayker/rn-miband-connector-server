@@ -10,13 +10,12 @@ core functionality.
 
 ## Services review
 
+Main components of SBP are described below on scheme:
+![alt text](resources/media/SBP_microservice_architecture_1.jpg)
+
 SBP consists of two service groups:
-1) business domain service
-2) technical services
+1) business domain service (Account, Device)
+2) technical services (Gateway, Auth, Config, Eureka, RabbitMq)
 
-
-
-
-
-
+Additionally few MongoDB instances were integrate to provide data persistence  
 

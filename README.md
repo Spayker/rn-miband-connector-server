@@ -60,7 +60,7 @@ Default dev port: 4000
 
 Route config (./config/src/main/resources/shared/gateway-point.yml):
 
-    `routes:
+     routes:
         auth-service:
            path: /mservicet/**
            url: http://auth-service:${AUTH_SERVICE_DEV_PORT}
@@ -77,10 +77,37 @@ Route config (./config/src/main/resources/shared/gateway-point.yml):
            path: /devices/**
            serviceId: device-service
            stripPrefix: false
-           sensitiveHeaders:`  
+           sensitiveHeaders:
 
 ## Auth service
-Authorization responsibilities are completely extracted to separate server, which grants [OAuth2 tokens](https://tools.ietf.org/html/rfc6749) for the backend resource services. Auth Server is used for user authorization as well as for secure machine-to-machine communication inside a perimeter.
+Auth service grants [OAuth2 tokens](https://tools.ietf.org/html/rfc6749) for backend services. It is used for user authorization as well as for secure machine-to-machine communication in terms of inner service circle. Default dev port: 5000
 
+Method	| Path	| Description	| User authenticated
+------------- | ------------------------- | ------------- |:-------------:|
+POST	| /mservicet/oauth/token	| Get user access token          | 	
 
+## Config service
+[Config service](http://cloud.spring.io/spring-cloud-config/spring-cloud-config.html) is horizontally scalable centralized configuration service for distributed systems. Main purpose: keep and share configurations among all services the server has during start. Configs are shared by Native profile (that can be changed at any moment). Config sharing happens once all containers are setup and have begun their init procedure. Default dev port: 8888
 
+## Eureka service
+Netflix Eureka service implements "Service discovery" architecture pattern. It allows to auto detect service instances, which could have dynamically assigned addresses because of auto-scaling, failures and upgrades.
+
+Once application startup has begun, it will register with Eureka Server and provide meta-data, such as host and port, health indicator URL, home page etc. Eureka receives heartbeat messages from each instance belonging to a service. If the heartbeat fails over a configurable timetable, the instance will be removed from the registry.
+
+Also, Eureka provides a simple interface for tracking of running services and quantity of available instances: `http://localhost:8761`
+Default dev port: 8761
+
+## RabbitMq service
+RabbitMQ is known as a “traditional” message broker, which is suitable for a wide range of projects. It is successfully used both for development of new startups and notable enterprises. Included by default into Netflix micro-service tool set.
+
+Currently it's not used in a "full-scale" by the project. Default dev port: 5672
+
+## MongoDB instances
+Like it was mentioned before each business related service has its own db. In addition Auth service also has it to make persistence of user related data possible.
+
+Account and Device dbs use dump scripts located at `./mongodb/dump` folder.
+Default ports may vary.
+
+Auth external db port: 25000
+Account external db port: 26000
+Device external db port: 27000

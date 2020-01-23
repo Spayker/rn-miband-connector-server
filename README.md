@@ -111,3 +111,24 @@ Default ports may vary.
 Auth external db port: 25000
 Account external db port: 26000
 Device external db port: 27000
+
+Typical access url example: `http://localhost:25000`
+
+## Project deployment
+Docker Compose allows to run micro-service infrastructure by 'one click'. It makes sense when a server consists of significant amount of services. Current configuration supplies next project's needs:
+1) rapid and comfort deployment of appropriate services for development purposes
+2) centralized access to deployment configuration
+3) horizontal scaling of deployment variations: when server runs with partial set of services
+
+In general docker compose config can be divided on few items:
+- `.env`: keeps port, credential and some infrastructure configs for all project's services
+- `docker-compose.yml`: enlists all services must be run by server and includes major configuration per container
+- `docker-compose.dev.yml`: specifies additional configuration for services that must be run in dev mode
+
+
+
+
+
+
+
+

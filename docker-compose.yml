@@ -1,4 +1,4 @@
-version: '2.1'
+version: '3.7'
 services:
 
   config:
@@ -22,8 +22,7 @@ services:
     image: mservicet-registry
     restart: always
     depends_on:
-      config:
-        condition: service_healthy
+      - config
     logging:
       options:
         max-size: "10m"
@@ -39,8 +38,7 @@ services:
     image: mservicet-gateway-point
     restart: always
     depends_on:
-      config:
-        condition: service_healthy
+      - config
     logging:
       options:
         max-size: "10m"
@@ -59,8 +57,7 @@ services:
     image: mservicet-auth-service
     restart: always
     depends_on:
-      config:
-        condition: service_healthy
+      - config
     logging:
       options:
         max-size: "10m"
@@ -89,8 +86,7 @@ services:
     image: mservicet-account-service
     restart: always
     depends_on:
-      config:
-        condition: service_healthy
+      - config
     logging:
       options:
         max-size: "10m"
@@ -120,8 +116,7 @@ services:
     image: mservicet-device-service
     restart: always
     depends_on:
-      config:
-        condition: service_healthy
+      - config
     logging:
       options:
         max-size: "10m"
